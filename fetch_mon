@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#
+# Zsh script for looping the coinmon command on your desired coins
+# Author: Jasper Haasdijk
+#
+
+coins="BTC,ETH,BCH,MIOTA,DASH,XMR,QTUM,XLM,ZEC,XRB,OMG,WAVES,PPT,SALT,DCR,MAID"
+
+while true
+do
+  clear
+  coinmon -f $coins
+  sleep 1200
+done
+
