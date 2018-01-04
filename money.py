@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Python command line tool for taking command of your coins
+Python command line tool for taking command of your crypto coins
 
 Command line tool to:
     - Fetch information from the coinmarketcap API
