@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 """
-Python command line tool for talking to the coinmarketcap API
+Python command line tool for taking command of your coins
 
-Command line tool to check:
-    - How much money I currently have invested in cryptocurrency
+Command line tool to:
+    - Fetch information from the coinmarketcap API
+    - Check how much money you currently have invested in cryptocurrency
 """
 
 import json
