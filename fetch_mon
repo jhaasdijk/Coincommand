@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 #
 # Zsh script for looping the coinmon command on your desired coins
