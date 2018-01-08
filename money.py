@@ -32,7 +32,7 @@ def parse_response(response):
         return data
 
     else:  # response code is not ok (200)
-        myResponse.raise_for_status()  # print the resulting http error code with description
+        response.raise_for_status()  # print the resulting http error code with description
 
 
 def check_investment(data):
