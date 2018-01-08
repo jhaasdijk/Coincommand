@@ -5,12 +5,12 @@
 # Author: Jasper Haasdijk
 #
 
-coins="BTC,ETH,BCH,MIOTA,DASH,XMR,QTUM,XLM,ZEC,XRB,OMG,WAVES,PPT,SALT,DCR,MAID"
+coins=(BTC ETH BCH MIOTA DASH XMR QTUM XLM ZEC XRB OMG WAVES PPT SALT DCR MAID)
 
 while true
 do
   clear
-  coinmon -f $coins
+  coinmon -f ${(j:,:)coins}
   sleep 1200
 done
 
