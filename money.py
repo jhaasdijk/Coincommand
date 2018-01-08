@@ -40,7 +40,8 @@ def check_investment(data):
     for key in data:
         for name, value in coins.items():
             if key['id'] == name:
-                total += (float(key['price_usd']) / value) * (investment / len(coins))
+                total += (float(key['price_usd']) / value) * \
+                    (investment / len(coins))
     return total
 
 
