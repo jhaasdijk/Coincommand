@@ -4,11 +4,14 @@
 Python command line tool for taking command of your crypto coins
 
 Command line tool to:
-    - Fetch information from the coinmarketcap API
+    - Fetch and display information from the coinmarketcap API
     - Check how much money you currently have invested in cryptocurrency
 """
 
+import argparse
 import json
+import sys
+
 import requests
 
 __author__ = "Jasper Haasdijk"
@@ -19,6 +22,17 @@ coins = {'bitcoin': 14446.100, 'ethereum': 719.441, 'bitcoin-cash': 2609.576, 'i
          'monero': 373.981, 'qtum': 53.074, 'stellar': 0.201844, 'zcash': 508.914, 'raiblocks': 10.7311,
          'omisego': 13.495, 'waves': 12.353, 'populous': 30.229, 'salt': 13.756, 'decred': 88.273,
          'maidsafecoin': 0.920078}
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-v", "--version",
+                       help="display version information", action="store_true")
+    args = parser.parse_args()
+
+    if args.version:
+        print("Coincommand {}".format(__version__))
 
 
 def get_response():
@@ -46,7 +60,10 @@ def check_investment(data):
 
 
 if __name__ == '__main__':
-    response = get_response()
-    data = parse_response(response)
-    total = check_investment(data)
-    print("{} USD".format(total))
+    if len(sys.argv) > 1:
+        parse_args()
+    else:
+        response = get_response()
+        data = parse_response(response)
+        total = check_investment(data)
+        print("{} USD".format(total))
