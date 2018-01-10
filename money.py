@@ -14,6 +14,8 @@ import sys
 
 import requests
 
+from tabulate import tabulate
+
 __author__ = "Jasper Haasdijk"
 __version__ = "0.0.1"
 __status__ = "Alpha"
@@ -67,10 +69,21 @@ def check_investment(data):
 
 def display_information(data, top=10):
     """ Prints the top x coins, by default top 10 """
+    headers = ["Rank", "Coin",
+               "Price (USD)", "Market Cap (USD)", "Change (24H)", "Change (7D)"]
+    table = []
     for i, key in enumerate(data):
         if i == top:
             break
-        print("nr: {} \t id: {}".format(i+1, key['id']))
+        table.append((i + 1,
+                      key['symbol'],
+                      key['price_usd'],
+                      key['market_cap_usd'],
+                      "{}%".format(key['percent_change_24h']),
+                      "{}%".format(key['percent_change_7d'])))
+
+    print(tabulate(table, headers, floatfmt=(".1f", ".1f", ".1f",
+                                             ".4f", ".1f", ".2f", ".2f", ".2f"), tablefmt="fancy_grid"))
 
 
 if __name__ == '__main__':
