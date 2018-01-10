@@ -1,16 +1,14 @@
 #!/usr/bin/env zsh
 
 #
-# Zsh script for looping the coinmon command on your desired coins
+# Zsh script for looping the command to automatically refresh the information
 # Author: Jasper Haasdijk
 #
 
-coins=(BTC ETH BCH MIOTA DASH XMR QTUM XLM ZEC XRB OMG WAVES PPT SALT DCR MAID)
-
 while true
 do
-  clear
-  coinmon -f ${(j:,:)coins}
-  sleep 1200
+    printf "Fetched data from coinmarketcap.com at " && date +"%T"
+    clear
+    python3 money.py
+    sleep 1200
 done
-
