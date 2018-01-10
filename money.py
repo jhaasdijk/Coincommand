@@ -34,8 +34,8 @@ coins = [('bitcoin', 14446.100, 50), ('ethereum', 719.441, 50),
 def parse_args():
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("-v", "--version",
-                       help="display version information", action="store_true")
+    group.add_argument("-v", "--version", help="display version information",
+                       action="store_true")
     args = parser.parse_args()
 
     if args.version:
@@ -57,12 +57,20 @@ def parse_response(response):
 
 
 def check_investment(data):
-    investment, total = 1000, 0
+    total = 0
     for key in data:
         for name, value, investment in coins:
             if key['id'] == name:
                 total += (float(key['price_usd']) / value) * investment
     return total
+
+
+def display_information(data, top=10):
+    """ Prints the top x coins, by default top 10 """
+    for i, key in enumerate(data):
+        if i == top:
+            break
+        print("nr: {} \t id: {}".format(i+1, key['id']))
 
 
 if __name__ == '__main__':
@@ -71,5 +79,6 @@ if __name__ == '__main__':
     else:
         response = get_response()
         data = parse_response(response)
-        total = check_investment(data)
-        print("{} USD".format(total))
+        display_information(data)
+        # total = check_investment(data)
+        # print("{} USD".format(total))
