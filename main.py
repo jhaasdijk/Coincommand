@@ -82,8 +82,9 @@ def display_information(data, top=10):
                       "{}%".format(key['percent_change_24h']),
                       "{}%".format(key['percent_change_7d'])))
 
-    print(tabulate(table, headers, floatfmt=(".0f", ".0f", ".4f",
-                                             ".0f", ".2f", ".2f"), tablefmt="fancy_grid"))
+    output = (tabulate(table, headers, floatfmt=(".0f", ".0f", ".4f",
+                                                 ".0f", ".2f", ".2f"), tablefmt="fancy_grid"))
+    print(output)
 
 
 if __name__ == '__main__':
