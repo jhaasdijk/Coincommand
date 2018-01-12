@@ -8,9 +8,17 @@ Command line tool to:
     - Check how much money you currently have invested in cryptocurrency
 """
 
+# TODO: add check on which system it is running (check os.name)
+# TODO: add function for "display information"
+# TODO: add option with the -r flag for delay when to refresh
+# TODO: modularize certain functionality into /modules/
+
 import argparse
 import json
+import os
 import sys
+import time
+from datetime import datetime
 
 import requests
 
@@ -38,10 +46,24 @@ def parse_args():
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-v", "--version", help="display version information",
                        action="store_true")
+    group.add_argument("-r", "--refresh",
+                       help="automatically refresh information", action="store_true")
     args = parser.parse_args()
 
     if args.version:
         print("Coincommand {}".format(__version__))
+
+    if args.refresh:
+        while True:
+            os.system('clear')
+            date = datetime.now().time()
+            print("Fetched data from coinmarketcap.com at {}".format(date))
+
+            response = get_response()
+            data = parse_response(response)
+            display_information(data)
+
+            time.sleep(1200)  # refreshes every 20 minutes
 
 
 def get_response():
