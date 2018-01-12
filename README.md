@@ -7,7 +7,9 @@ __status__ = "Alpha"
 ```
 
 Python command line tool for taking command of your crypto coins<br>
-Uses the [coinmarketcap](https://coinmarketcap.com/api/) API
+Uses the [coinmarketcap](https://coinmarketcap.com/api/) API<br>
+
+Run the `loop_main` script if you wish to automatically refresh the information every 20 minutes
 
 ## Dependencies
 
@@ -15,18 +17,16 @@ Uses the [coinmarketcap](https://coinmarketcap.com/api/) API
 
 --------------------------------------------------------------------------------
 
-### TO DO
+### TODO
 
-- [ ] When run without any options, Coincommand will display statistics about the current top 10 listings
-- [ ] Add colours to make the displayed statistics nicer on the eyes
+- [x] When run without any options, Coincommand will display statistics about the current top 10 listings
+- [x] Add colours to make the displayed statistics nicer on the eyes
 - [ ] Add optional command line parameters for tuning the program to the user's desired use case
-
-  - [ ] `-h` for displaying help information
-  - [ ] `-v` for displaying version information
+  - [x] `-h` for displaying help information
+  - [x] `-v` for displaying version information
   - [ ] `-c` for displaying specific coin(s)
   - [ ] `-?` for displaying specific information
   - [ ] etc..
-
 - [ ] Add the option to output to different fiat currencies
 - [ ] Add the option to automatically refresh the information
 - [ ] Add visual aid output. Inspiration taken from [gtop](https://github.com/aksakalli/gtop) and [blessed](https://github.com/yaronn/blessed-contrib)
