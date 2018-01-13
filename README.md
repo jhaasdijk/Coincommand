@@ -9,7 +9,7 @@ __status__ = "Alpha"
 Python command line tool for taking command of your crypto coins<br>
 Uses the [coinmarketcap](https://coinmarketcap.com/api/) API<br>
 
-Run the `loop_main` script if you wish to automatically refresh the information every 20 minutes
+Run the script with the `-r` or `--refresh` parameter if you wish to automatically refresh the information every 20 minutes
 
 ## Dependencies
 
