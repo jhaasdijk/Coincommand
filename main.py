@@ -9,9 +9,8 @@ Command line tool to:
 """
 
 # TODO: add check on which system it is running (check os.name)
-# TODO: add function for "display information"
 # TODO: add option with the -r flag for delay when to refresh
-# TODO: modularize certain functionality into /modules/
+# TODO: check colours output in different terminals with different colouring
 
 import argparse
 import json
