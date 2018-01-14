@@ -2,7 +2,7 @@
 
 """
 Module which handles every interaction with the coinmarketcap API
-This class fetches data based on the user's request
+This module fetches data based on the user's request
 """
 
 import json

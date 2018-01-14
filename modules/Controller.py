@@ -2,7 +2,7 @@
 
 """
 Module which contains the individual functions
-This class holds the main functionality of the script
+This module holds the main functionality of the script
 """
 
 """
