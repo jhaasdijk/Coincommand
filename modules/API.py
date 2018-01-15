@@ -10,8 +10,8 @@ import json
 import requests
 
 
-def get_response():
-    url = 'https://api.coinmarketcap.com/v1/ticker/?limit=0'
+def get_response(top=10):
+    url = "https://api.coinmarketcap.com/v1/ticker/?limit={}".format(top)
     return requests.get(url)
 
 
