@@ -8,10 +8,14 @@ Command line tool to:
     - Check how much money you currently have invested in cryptocurrency
 """
 
-# TODO: add option with the -r flag for delay when to refresh
-# TODO: check colours output in different terminals with different colouring
-# TODO: properly do the colouring in the printing function
-# TODO: explore other options for command line parameters than argparse
+# TODO: Colouring
+# TODO: -- check colours output in different terminals with different colouring
+# TODO: -- properly do the colouring in the printing function
+
+# TODO: Parsing
+# TODO: -- explore other options for command line parameters than argparse
+# TODO: -- add option with the -r flag for delay when to refresh
+# TODO: -- add `-t` flag for user's own top x setting
 
 import argparse
 import os
