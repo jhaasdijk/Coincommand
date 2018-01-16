@@ -33,6 +33,7 @@ def parse_args():
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-v", "--version", help="display version information", action="store_true")
     group.add_argument("-c", help="convert to your preferred fiat currency", metavar="currency")
+    group.add_argument("-f", help="only display your desired coins", metavar="list")
     group.add_argument("-r", help="automatically refresh information every <rate> seconds", metavar="rate")
     group.add_argument("-t", help="display the first <top> currencies", metavar="top")
     args = parser.parse_args()
@@ -42,6 +43,10 @@ def parse_args():
 
     if args.c:
         default_iteration(convert=str(args.c))
+
+    if args.f:
+        wordlist = str(args.f).split(', ')
+        default_iteration(top=0, find=wordlist)
 
     if args.r:
         while True:
@@ -53,11 +58,14 @@ def parse_args():
         default_iteration(top=args.t)
 
 
-def default_iteration(top=10, convert=""):
+def default_iteration(top=10, convert="", find=None):
+    if find is None:
+        find = []
+
     response = API.get_response(top, convert)
     data = API.parse_response(response)
     currency = convert.lower()
-    output = Displayer.display_information(data, currency)
+    output = Displayer.display_information(data, currency, find)
     print(output)
 
 

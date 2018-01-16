@@ -72,12 +72,8 @@ If you run into any errors, please do not hesitate to create an issue
 
 --------------------------------------------------------------------------------
 
-## TODO
+## What's next
 
-- [ ] Add optional command line parameters for tuning the program to the user's desired use case
-  - [ ] `-d` for displaying specific coin(s)
-  - [ ] `-?` for displaying specific information
-  - [ ] etc..
 - [ ] Add visual aid output. Inspiration taken from [gtop](https://github.com/aksakalli/gtop) and [blessed](https://github.com/yaronn/blessed-contrib)
 - [ ] Add the option to load from json format to make use of a user specified configuration
 - [ ] Add the option to have user specified alerts as per their configuration
