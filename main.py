@@ -13,8 +13,7 @@ Command line tool to:
 # TODO: -- properly do the colouring in the printing function
 
 # TODO: Parsing
-# TODO: -- explore other options for command line parameters than argparse
-# TODO: -- add `-t` flag for user's own top x setting
+# TODO: -- optimize argument parser
 
 import argparse
 import os
@@ -35,6 +34,7 @@ def parse_args():
     group.add_argument("-v", "--version", help="display version information", action="store_true")
     group.add_argument("-c", help="convert to your preferred fiat currency", metavar="currency")
     group.add_argument("-r", help="automatically refresh information every <rate> seconds", metavar="rate")
+    group.add_argument("-t", help="display the first <top> currencies", metavar="top")
     args = parser.parse_args()
 
     if args.version:
@@ -48,6 +48,9 @@ def parse_args():
             os.system('clear')
             default_iteration()
             time.sleep(float(args.r))
+
+    if args.t:
+        default_iteration(top=args.t)
 
 
 def default_iteration(top=10, convert=""):
