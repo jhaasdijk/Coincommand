@@ -73,7 +73,6 @@ If you run into any errors, please do not hesitate to create an issue
 - [ ] Add visual aid output. Inspiration taken from [gtop](https://github.com/aksakalli/gtop) and [blessed](https://github.com/yaronn/blessed-contrib)
 - [ ] Add the option to load from json format to make use of a user specified configuration
 - [ ] Add the option to have user specified alerts as per their configuration
-- [ ] Read up on a license and add a license
 - [ ] Read up on releasing and add a release
 
 --------------------------------------------------------------------------------
