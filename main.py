@@ -14,14 +14,12 @@ Command line tool to:
 
 # TODO: Parsing
 # TODO: -- explore other options for command line parameters than argparse
-# TODO: -- add option with the -r flag for delay when to refresh
 # TODO: -- add `-t` flag for user's own top x setting
 
 import argparse
 import os
 import sys
 import time
-from datetime import datetime
 
 from modules import API
 from modules import Displayer
@@ -34,28 +32,29 @@ __status__ = "Alpha"
 def parse_args():
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("-v", "--version", help="display version information",
-                       action="store_true")
-    group.add_argument("-r", "--refresh",
-                       help="automatically refresh information", action="store_true")
+    group.add_argument("-v", "--version", help="display version information", action="store_true")
+    group.add_argument("-c", help="convert to your preferred fiat currency", metavar="currency")
+    group.add_argument("-r", help="automatically refresh information every <rate> seconds", metavar="rate")
     args = parser.parse_args()
 
     if args.version:
         print("Coincommand {}".format(__version__))
 
-    if args.refresh:
+    if args.c:
+        default_iteration(convert=str(args.c))
+
+    if args.r:
         while True:
             os.system('clear')
             default_iteration()
-            time.sleep(1200)  # refreshes every 20 minutes
+            time.sleep(float(args.r))
 
 
-def default_iteration():
-    date = datetime.now().time()
-    print("Fetched data from coinmarketcap.com at {}".format(date))
-    response = API.get_response()
+def default_iteration(top=10, convert=""):
+    response = API.get_response(top, convert)
     data = API.parse_response(response)
-    output = Displayer.display_information(data)
+    currency = convert.lower()
+    output = Displayer.display_information(data, currency)
     print(output)
 
 

@@ -14,17 +14,26 @@ Uses the [coinmarketcap](https://coinmarketcap.com/api/) API<br>
 Quickly check current crypto statistics from the ease of your terminal<br>
 Some of the current features include:
 
-- Show the currently installed version by using the `-v` or `--version` parameter
-- Automatically refresh the information every 20 minutes by using the `-r` or `--refresh` parameter
 - Get help on the usage of command line flags with the `-h` or `--help` parameter
+- Show the currently installed version by using the `-v` or `--version` parameter
+- Convert to your preferred fiat currency by using the `-c` or `--convert` flag. Valid values are:
+- Automatically refresh the information every `rate` seconds by using the `-r` or parameter
 
 ```
-usage: main.py [-h] [-v | -r]
+"AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP",
+"HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK",
+"NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD",
+"USD", "ZAR"
+```
+
+```
+usage: main.py [-h] [-v | -c currency | -r rate]
 
 optional arguments:
   -h, --help     show this help message and exit
   -v, --version  display version information
-  -r, --refresh  automatically refresh information
+  -c currency    convert to your preferred fiat currency
+  -r rate        automatically refresh information every <rate> seconds
 ```
 
 - Display information about the current top 10 listings by running the tool without any options. This is the default behaviour
@@ -66,13 +75,11 @@ If you run into any errors, please do not hesitate to create an issue
 ## TODO
 
 - [ ] Add optional command line parameters for tuning the program to the user's desired use case
-  - [ ] `-c` for displaying specific coin(s)
+  - [ ] `-d` for displaying specific coin(s)
   - [ ] `-?` for displaying specific information
   - [ ] etc..
-- [ ] Add the option to output to different fiat currencies
 - [ ] Add visual aid output. Inspiration taken from [gtop](https://github.com/aksakalli/gtop) and [blessed](https://github.com/yaronn/blessed-contrib)
 - [ ] Add the option to load from json format to make use of a user specified configuration
 - [ ] Add the option to have user specified alerts as per their configuration
-- [ ] Read up on releasing and add a release
 
 --------------------------------------------------------------------------------
