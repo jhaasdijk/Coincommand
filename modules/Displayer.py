@@ -40,7 +40,7 @@ def display_information(data, currency, find):
                 table.append(row)
 
         output = (tabulate(table, headers, floatfmt=(".0f", ".0f", ".4f",
-                                                         ".0f", ".2f", ".2f"), tablefmt="fancy_grid"))
+                                                     ".0f", ".2f", ".2f"), tablefmt="fancy_grid"))
 
         return output
 
