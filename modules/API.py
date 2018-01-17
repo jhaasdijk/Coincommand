@@ -20,15 +20,15 @@ currencies = ["AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GB
 def get_response(top, convert):
     if convert:
         if convert in currencies:
-            url = "https://api.coinmarketcap.com/v1/ticker/?convert={}&limit={}".format(convert, top)
+            url = f"https://api.coinmarketcap.com/v1/ticker/?convert={convert}&limit={top}"
         else:
             print("Error: Not a valid currency format")
             sys.exit(1)
     else:
-        url = "https://api.coinmarketcap.com/v1/ticker/?limit={}".format(top)
+        url = f"https://api.coinmarketcap.com/v1/ticker/?limit={top}"
 
     date = datetime.now().time()
-    print("Fetched data from coinmarketcap.com at {}".format(date))
+    print(f"Fetched data from coinmarketcap.com at {date}")
 
     return requests.get(url)
 

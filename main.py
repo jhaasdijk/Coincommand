@@ -39,7 +39,7 @@ def parse_args():
     args = parser.parse_args()
 
     if args.version:
-        print("Coincommand {}".format(__version__))
+        print(f"Coincommand {__version__}")
 
     if args.c:
         default_iteration(convert=str(args.c))

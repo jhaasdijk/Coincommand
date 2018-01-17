@@ -10,24 +10,20 @@ from tabulate import tabulate
 
 def populate_table(i, key, table, currency):
     if currency:
-        row = [i + 1, key['symbol'], key['price_{}'.format(currency)],
-               key['market_cap_{}'.format(currency)]]
+        row = [i + 1, key['symbol'], key[f'price_{currency}'],
+               key[f'market_cap_{currency}']]
     else:
         row = [i + 1, key['symbol'], key['price_usd'], key['market_cap_usd']]
 
     if float(key['percent_change_24h']) < 0:
-        row.append("\033[1;31;40m{}%\033[0;37;40m"
-                   .format(key['percent_change_24h']))
+        row.append(f"\033[1;31;40m{key['percent_change_24h']}%\033[0;37;40m")
     else:
-        row.append("\033[1;32;40m{}%\033[0;37;40m"
-                   .format(key['percent_change_24h']))
+        row.append(f"\033[1;32;40m{key['percent_change_24h']}%\033[0;37;40m")
 
     if float(key['percent_change_7d']) < 0:
-        row.append("\033[1;31;40m{}%\033[0;37;40m"
-                   .format(key['percent_change_7d']))
+        row.append(f"\033[1;31;40m{key['percent_change_7d']}%\033[0;37;40m")
     else:
-        row.append("\033[1;32;40m{}%\033[0;37;40m"
-                   .format(key['percent_change_7d']))
+        row.append(f"\033[1;32;40m{key['percent_change_7d']}%\033[0;37;40m")
 
     table.append(row)
 
