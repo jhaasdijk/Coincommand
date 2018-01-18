@@ -8,10 +8,6 @@ Command line tool to:
     - Check how much money you currently have invested in cryptocurrency
 """
 
-# TODO: Colouring
-# TODO: -- check colours output in different terminals with different colouring
-# TODO: -- properly do the colouring in the printing function
-
 # TODO: Parsing
 # TODO: -- optimize argument parser
 
