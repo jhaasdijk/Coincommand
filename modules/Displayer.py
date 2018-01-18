@@ -8,6 +8,12 @@ Responsible for the actual output to the console
 from tabulate import tabulate
 
 
+class Colours:
+    GREEN = '\033[93m'
+    RED = '\033[91m'
+    END = '\033[0m'
+
+
 def populate_table(i, key, table, currency):
     if currency:
         row = [i + 1, key['symbol'], key[f'price_{currency}'],
@@ -16,14 +22,14 @@ def populate_table(i, key, table, currency):
         row = [i + 1, key['symbol'], key['price_usd'], key['market_cap_usd']]
 
     if float(key['percent_change_24h']) < 0:
-        row.append(f"\033[1;31;40m{key['percent_change_24h']}%\033[0;37;40m")
+        row.append(Colours.RED + f"{key['percent_change_24h']}%" + Colours.END)
     else:
-        row.append(f"\033[1;32;40m{key['percent_change_24h']}%\033[0;37;40m")
+        row.append(Colours.GREEN + f"{key['percent_change_24h']}%" + Colours.END)
 
     if float(key['percent_change_7d']) < 0:
-        row.append(f"\033[1;31;40m{key['percent_change_7d']}%\033[0;37;40m")
+        row.append(Colours.RED + f"{key['percent_change_7d']}%" + Colours.END)
     else:
-        row.append(f"\033[1;32;40m{key['percent_change_7d']}%\033[0;37;40m")
+        row.append(Colours.GREEN + f"{key['percent_change_7d']}%" + Colours.END)
 
     table.append(row)
 
