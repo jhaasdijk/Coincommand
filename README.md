@@ -69,7 +69,7 @@ $ python3 main.py
 
 ## Dependencies
 
-- python3
+- python `>= 3.6`
 - [python-tabulate](https://bitbucket.org/astanin/python-tabulate)
 
 ## Troubleshooting
