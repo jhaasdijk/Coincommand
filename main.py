@@ -5,15 +5,12 @@ Python command line tool for taking command of your crypto coins
 
 Command line tool to:
     - Fetch and display information from the coinmarketcap API
-    - Check how much money you currently have invested in cryptocurrency
 """
 
-# TODO: Parsing
-# TODO: -- optimize argument parser
+# TODO: -- properly mutually exclude -v flag from the rest
 
 import argparse
 import os
-import sys
 import time
 
 from modules import API
@@ -26,47 +23,34 @@ __status__ = "Alpha"
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("-v", "--version", help="display version information", action="store_true")
-    group.add_argument("-c", help="convert to your preferred fiat currency", metavar="currency")
-    group.add_argument("-f", help="only display your desired coins", metavar="list")
-    group.add_argument("-r", help="automatically refresh information every <rate> seconds", metavar="rate")
-    group.add_argument("-t", help="display the first <top> currencies", metavar="top")
+    parser.add_argument("-v", "--version", help="display version information and exit", action="store_true")
+    parser.add_argument("-c", help="convert to your preferred fiat currency", choices=API.currencies, default="USD",
+                        metavar="currency")
+    parser.add_argument("-f", help="only display your desired coins", default=None, metavar="list")
+    parser.add_argument("-r", help="automatically refresh information every <rate> seconds", default=0, metavar="rate")
+    parser.add_argument("-t", help="display the first <top> currencies", default=0, metavar="top")
     args = parser.parse_args()
 
     if args.version:
         print(f"Coincommand {__version__}")
-
-    if args.c:
-        default_iteration(convert=str(args.c))
-
-    if args.f:
-        wordlist = str(args.f).split(', ')
-        default_iteration(top=0, find=wordlist)
-
-    if args.r:
-        while True:
-            os.system('clear')
-            default_iteration()
-            time.sleep(float(args.r))
-
-    if args.t:
-        default_iteration(top=args.t)
+        parser.exit(status=0)
+    else:
+        default_iteration(top=args.t, convert=args.c, find=args.f, refresh=args.r)
 
 
-def default_iteration(top=10, convert="", find=None):
-    if find is None:
-        find = []
-
+def default_iteration(top, convert, find, refresh):
     response = API.get_response(top, convert)
     data = API.parse_response(response)
     currency = convert.lower()
     output = Displayer.display_information(data, currency, find)
     print(output)
 
+    if refresh:
+        while True:
+            os.system('cls' if os.name == 'nt' else 'clear')
+            default_iteration(top, convert, find, refresh=0)
+            time.sleep(float(refresh))
+
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        parse_args()
-    else:
-        default_iteration()
+    parse_args()
