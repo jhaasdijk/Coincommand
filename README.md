@@ -31,11 +31,11 @@ $ python3 main.py -f "ETH, BTC, XRP, BCH, ADA"
 - Display the first `<top>` currencies by using the `-t` parameter
 
 ```
-usage: main.py [-h] [-v | -c currency | -f list | -r rate | -t top]
+usage: main.py [-h] [-v] [-c currency] [-f list] [-r rate] [-t top]
 
 optional arguments:
   -h, --help     show this help message and exit
-  -v, --version  display version information
+  -v, --version  display version information and exit
   -c currency    convert to your preferred fiat currency
   -f list        only display your desired coins
   -r rate        automatically refresh information every <rate> seconds
@@ -44,6 +44,10 @@ optional arguments:
 
 - Display information about the current top 10 listings by running the tool without any options. This is the default behaviour
 - Terminal colours to make the displayed statistics nicer on the eyes
+- Don't forget you can combine flags as you please. For example if you are interested in the top 5 coins, converted to euros and refreshed every 20 minutes, you'd do:
+```
+$ python3 main.py -t 5 -c EUR -r 1200
+```
 
 ## Getting started
 
