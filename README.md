@@ -3,7 +3,6 @@
 ```python
 __author__ = "Jasper Haasdijk"
 __version__ = "0.0.1"
-__status__ = "Alpha"
 ```
 
 Python command line tool for taking command of your crypto coins<br>

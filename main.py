@@ -7,8 +7,6 @@ Command line tool to:
     - Fetch and display information from the coinmarketcap API
 """
 
-# TODO: -- properly mutually exclude -v flag from the rest
-
 import argparse
 import os
 import time
@@ -18,12 +16,11 @@ from modules import Displayer
 
 __author__ = "Jasper Haasdijk"
 __version__ = "0.0.1"
-__status__ = "Alpha"
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-v", "--version", help="display version information and exit", action="store_true")
+    parser.add_argument("-v", "--version", action="version", version=__version__)
     parser.add_argument("-c", help="convert to your preferred fiat currency", choices=API.currencies, default="USD",
                         metavar="currency")
     parser.add_argument("-f", help="only display your desired coins", default=None, metavar="list")
@@ -31,11 +28,7 @@ def parse_args():
     parser.add_argument("-t", help="display the first <top> currencies", default=0, metavar="top")
     args = parser.parse_args()
 
-    if args.version:
-        print(f"Coincommand {__version__}")
-        parser.exit(status=0)
-    else:
-        default_iteration(top=args.t, convert=args.c, find=args.f, refresh=args.r)
+    default_iteration(top=args.t, convert=args.c, find=args.f, refresh=args.r)
 
 
 def default_iteration(top, convert, find, refresh):
