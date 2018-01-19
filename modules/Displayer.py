@@ -15,11 +15,7 @@ class Colours:
 
 
 def populate_table(i, key, table, currency):
-    if currency:
-        row = [i + 1, key['symbol'], key[f'price_{currency}'],
-               key[f'market_cap_{currency}']]
-    else:
-        row = [i + 1, key['symbol'], key['price_usd'], key['market_cap_usd']]
+    row = [i + 1, key['symbol'], key[f'price_{currency}'], key[f'market_cap_{currency}']]
 
     if float(key['percent_change_24h']) < 0:
         row.append(Colours.RED + f"{key['percent_change_24h']}%" + Colours.END)
@@ -35,8 +31,8 @@ def populate_table(i, key, table, currency):
 
 
 def display_information(data, currency, find):
-    headers = ["Rank", "Coin",
-               "Price", "Market Cap", "Change (24H)", "Change (7D)"]
+    headers = ["Rank", "Coin", f"Price ({currency.upper()})", f"Market Cap ({currency.upper()})", "Change (24H)",
+               "Change (7D)"]
     table = []
 
     for i, key, in enumerate(data):
