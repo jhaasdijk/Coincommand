@@ -25,9 +25,11 @@ def parse_args():
                         metavar="currency")
     parser.add_argument("-f", help="only display your desired coins", default=None, metavar="list")
     parser.add_argument("-r", help="automatically refresh information every <rate> seconds", default=0, metavar="rate")
-    parser.add_argument("-t", help="display the first <top> currencies", default=0, metavar="top")
+    parser.add_argument("-t", help="display the first <top> currencies", default=10, metavar="top")
     args = parser.parse_args()
 
+    if args.f:  # if we are focusing on a specific coin, we want to look further than the top 10 listings
+        args.t = 0
     default_iteration(top=args.t, convert=args.c, find=args.f, refresh=args.r)
 
 

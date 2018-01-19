@@ -27,7 +27,7 @@ Some of the current features include:
 $ python3 main.py -f "ETH, BTC, XRP, BCH, ADA"
 ```
 - Automatically refresh the information every `rate` seconds by using the `-r` or parameter
-- Display the first `<top>` currencies by using the `-t` parameter
+- Display the first `top` currencies by using the `-t` parameter
 
 ```
 usage: main.py [-h] [-v] [-c currency] [-f list] [-r rate] [-t top]

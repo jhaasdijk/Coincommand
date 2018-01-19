@@ -37,7 +37,7 @@ def display_information(data, currency, find):
 
     for i, key, in enumerate(data):
         if find:
-            if key['symbol'] in find:
+            if key['symbol'] in find.split(', '):
                 populate_table(i, key, table, currency)
         else:
             populate_table(i, key, table, currency)
