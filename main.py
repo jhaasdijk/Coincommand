@@ -38,11 +38,10 @@ def default_iteration(top, convert, find, refresh):
     output = Displayer.display_information(data, convert.lower(), find)
     print(output)
 
-    if refresh:
-        while True:
-            os.system('cls' if os.name == 'nt' else 'clear')
-            default_iteration(top, convert, find, refresh=0)
-            time.sleep(float(refresh))
+    while refresh:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        default_iteration(top, convert, find, refresh=0)
+        time.sleep(float(refresh))
 
 
 if __name__ == '__main__':
