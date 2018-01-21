@@ -45,7 +45,7 @@ optional arguments:
 - Terminal colours to make the displayed statistics nicer on the eyes
 - Don't forget you can combine flags as you please. For example if you are interested in the top 5 coins, converted to euros and refreshed every 20 minutes, you'd do:
 ```
-$ python3 main.py -t 5 -c EUR -r 1200
+$ ./main.py -t 5 -c EUR -r 1200
 ```
 
 ## Getting started
@@ -68,7 +68,7 @@ $ cd Coincommand
 
 Run the utility
 ```
-$ python3 main.py
+$ ./main.py
 ```
 
 ## Dependencies
