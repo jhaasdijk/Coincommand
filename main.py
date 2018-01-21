@@ -40,7 +40,7 @@ def default_iteration(top, convert, find, refresh):
 
     while refresh:
         os.system('cls' if os.name == 'nt' else 'clear')
-        default_iteration(top, convert, find, refresh=0)
+        default_iteration(top, convert, find, refresh=False)
         time.sleep(float(refresh))
 
 
