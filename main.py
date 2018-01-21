@@ -2,9 +2,7 @@
 
 """
 Python command line tool for taking command of your crypto coins
-
-Command line tool to:
-    - Fetch and display information from the coinmarketcap API
+Command line tool to fetch and display information from the coinmarketcap API
 """
 
 import argparse
@@ -30,14 +28,14 @@ def parse_args():
 
     if args.f:  # if we are focusing on a specific coin, we want to look further than the top 10 listings
         args.t = 0
-    default_iteration(top=args.t, convert=args.c, find=args.f, refresh=args.r)
+
+    default_iteration(args.t, args.c, args.f, args.r)
 
 
 def default_iteration(top, convert, find, refresh):
     response = API.get_response(top, convert)
     data = API.parse_response(response)
-    currency = convert.lower()
-    output = Displayer.display_information(data, currency, find)
+    output = Displayer.display_information(data, convert.lower(), find)
     print(output)
 
     if refresh:

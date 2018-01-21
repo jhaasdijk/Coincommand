@@ -2,7 +2,7 @@
 
 """
 Module which contains the individual functions
-This module holds the main functionality of the script
+This module extends the main functionality of the script
 """
 
 """
