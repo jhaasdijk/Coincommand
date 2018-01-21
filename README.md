@@ -8,6 +8,10 @@ __version__ = "0.0.1"
 Python command line tool for taking command of your crypto coins<br>
 Uses the [coinmarketcap](https://coinmarketcap.com/api/) API<br>
 
+## Screenshot
+
+![](https://github.com/jhaasdijk/Coincommand/blob/master/Coincommand.png)
+
 ## Introduction
 
 Quickly check current crypto statistics from the ease of your terminal<br>
