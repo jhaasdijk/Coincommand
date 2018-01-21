@@ -50,9 +50,10 @@ $ python3 main.py -t 5 -c EUR -r 1200
 
 ## Getting started
 
-Install dependency `python-tabulate`
+Install dependencies
 ```
 $ pip install tabulate
+$ pip install requests
 ```
 
 Clone this repository at the desired location
@@ -74,6 +75,7 @@ $ python3 main.py
 
 - python `>= 3.6`
 - [python-tabulate](https://bitbucket.org/astanin/python-tabulate)
+- requests
 
 ## Troubleshooting
 
