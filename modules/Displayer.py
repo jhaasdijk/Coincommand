@@ -15,7 +15,8 @@ class Colours:
 
 
 def populate_table(i, key, table, currency):
-    row = [i + 1, key['symbol'], key[f'price_{currency}'], key[f'market_cap_{currency}']]
+    market_cap = f"{float(key[f'market_cap_{currency}']):,}".rstrip('0').rstrip('.')
+    row = [i + 1, key['symbol'], key[f'price_{currency}'], market_cap]
 
     if float(key['percent_change_24h']) < 0:
         row.append(Colours.RED + f"{key['percent_change_24h']}%" + Colours.END)
